@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ייבוא גיליון ציונים</title>
+    <script src="popup.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            width: 320px;
+            text-align: right;
+        }
+        h2 {
+            font-size: 18px;
+        }
+        input {
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>ייבוא גיליון ציונים</h2>
+    <p>
+        <b>שימו לב:</b> לפני הגישה לפורטל יש לוודא שאתם מחוברים אליו.
+        <br>
+        <a href="https://portalex.technion.ac.il" target="_blank">
+            לחצו כאן להתחברות לפורטל הסטודנטים
+        </a>
+        <br><br>
+        לאחר ההתחברות, עקבו אחרי ההוראות להורדת גיליון הציונים:
+        <br>
+        <a href="https://portalex.technion.ac.il/sap/bc/ui5_ui5/sap/her_myrequest/index.html?sap-language=HE" target="_blank">
+            לחצו כאן כדי להיכנס לפורטל הבקשות
+        </a>
+        <br><br>
+        1. בתחתית המסך בחרו <b>צור בקשה</b><br>
+        2. בחרו <b>סוג בקשה: בקשות לאישורים ותדפיס ציונים</b><br>
+        3. בחרו <b>מסמך: תדפיס קורסים</b><br>
+        4. לחצו על <b>הגש</b> וחכו מספר רגעים<br>
+        5. רעננו את הדף, לחצו על הבקשה בצד ימין ואז על <b>מסמכים</b><br>
+        6. הורידו את הקובץ <b>בפורמט PDF</b> בעברית<br> 
+    </p>
+
+    <h3>בחרו קובץ PDF לייבוא</h3>
+    <input type="file" id="pdfUpload" accept="application/pdf">
+    <div id="gradesResults"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Moodle & Panopto Helper",
+    "version": "1.3.2",
+    "description": "Cleans Moodle links to open in a proper new tab, adds a Panopto download button, calculate GPA from PDF transcript.",
+    "permissions": ["activeTab", "clipboardWrite", "downloads"],
+    "host_permissions": [
+        "https://*.technion.ac.il/*",
+        "https://*.panopto.com/*",
+        "https://*.panopto.eu/*"
+    ],
+    "icons": {
+        "64": "icon.png"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://*.technion.ac.il/*"],
+            "js": ["moodle.js", "popup.js"],
+            "run_at": "document_start"
+        },
+        {
+            "matches": [
+                "https://*.panopto.com/Panopto/Pages/Viewer.aspx?*id=*",
+                "https://*.panopto.eu/Panopto/Pages/Viewer.aspx?*id=*",
+                "https://*.panopto.com/Panopto/Pages/Embed.aspx?*id=*",
+                "https://*.panopto.eu/Panopto/Pages/Embed.aspx?*id=*",
+                "https://*.panopto.com/Panopto/Pages/Sessions/List.aspx*",
+                "https://*.panopto.eu/Panopto/Pages/Sessions/List.aspx*"
+            ],
+            "js": ["panopto.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["notify-library.js", "popup.js", "libs/pdf.mjs", "libs/pdf.worker.mjs", "style.css", "results.js"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
