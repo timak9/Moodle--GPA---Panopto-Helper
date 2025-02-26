@@ -198,12 +198,44 @@ document.addEventListener("DOMContentLoaded", async function () {
             }, 100);
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
+
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ popup.js chargé avec succès !");
+
+    const saveButton = document.getElementById("saveCredentials");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const serverCheckbox = document.getElementById("server");
+
+    if (!saveButton) {
+        console.error("❌ Erreur : le bouton 'Enregistrer' n'a pas été trouvé !");
+        return;
+    }
+
+    saveButton.addEventListener("click", function () {
+        console.log("📥 Clic détecté sur le bouton Enregistrer !");
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        const server = serverCheckbox.checked;
+
+        console.log("📌 Valeurs à enregistrer :", { username, password, server });
+
+        chrome.storage.local.set({ username, password, server }, function () {
+            if (chrome.runtime.lastError) {
+                console.error("❌ Erreur lors de l'enregistrement :", chrome.runtime.lastError);
+                return;
+            }
+            console.log("✅ Identifiants enregistrés avec succès !");
+            
+            chrome.storage.local.get(["username", "password", "server"], function (newData) {
+                console.log("📌 Vérification après enregistrement :", newData);
+            });
+
+            alert("Identifiants enregistrés !");
+        });
+    });
 });
